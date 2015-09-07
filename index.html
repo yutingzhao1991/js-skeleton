@@ -21,6 +21,12 @@
         border: 1px solid #ccc;
         border-radius: 3px;
     }
+    .footer {
+        text-align: center;
+        font-size: 8px;
+        margin-top: 10px;
+        color: #333;
+    }
     #name {
         text-align: center;
     }
@@ -43,7 +49,7 @@
 </head>
 <body>
     <div class="container-fluid" id="list" style="display:none;">
-        <h1>JS-SKELETON LIST:</h1>
+        <h1>LIST:</h1>
     </div>
     <div class="container-fluid" id="demo">
         <h1 id="name">JS-SKELETON</h1>
@@ -64,6 +70,7 @@
             </div>
         </div>
     </div>
+    <div class="footer">Power By <a href="https://github.com/yutingzhao1991/js-skeleton">js-skeleton</a> | <a href="?">LIST</a></div>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/prettify/r298/prettify.js"></script>
     <script type="text/javascript">
@@ -79,8 +86,9 @@
         $('#list').show()
         $('#demo').hide()
     } else {
-        $('#workspace').attr('src', 'works/' + demoDame + '.html')
-        $('#name').text(demoDame)
+        var link = 'works/' + demoDame + '.html'
+        $('#workspace').attr('src', link)
+        $('#name').html('<a href="' + link + '">' + demoDame + '</a>')
         laodCode('js')
         laodCode('css')
         laodCode('html')
