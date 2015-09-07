@@ -10,7 +10,18 @@
         height: 100%;
         background-color: #eee;
     }
-    h1 {
+    .list-item {
+        display: block;
+        height: 80px;
+        font-size: 38px;
+        line-height: 68px;
+        background-color: #fff;
+        margin-top: 10px;
+        padding: 6px 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    #name {
         text-align: center;
     }
     .block {
@@ -31,7 +42,10 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="list" style="display:none;">
+        <h1>JS-SKELETON LIST:</h1>
+    </div>
+    <div class="container-fluid" id="demo">
         <h1 id="name">JS-SKELETON</h1>
         <div class="row">
             <div class="col-md-6">
@@ -53,14 +67,27 @@
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/prettify/r298/prettify.js"></script>
     <script type="text/javascript">
-    var name = getUrlParameter('name') || 'helloworld'
-    $('#workspace').attr('src', 'works/' + name + '.html')
-    $('#name').text(name)
-    laodCode('js')
-    laodCode('css')
-    laodCode('html')
+    var demoDame = getUrlParameter('name') || null
+
+    if (demoDame == null) {
+        // 显示LIST
+        $.get('works/config.json').then(function(data) {
+            $('#list').append(data.demoList.map(function(n) {
+                return '<a class="list-item" href="?name=' + n + '">' + n + '</a>'
+            }))
+        })
+        $('#list').show()
+        $('#demo').hide()
+    } else {
+        $('#workspace').attr('src', 'works/' + demoDame + '.html')
+        $('#name').text(demoDame)
+        laodCode('js')
+        laodCode('css')
+        laodCode('html')
+    }
+
     function laodCode(type) {
-        return $.get('workspace/' + name + '/app.' + type, {}, function(code){
+        return $.get('workspace/' + demoDame + '/app.' + type, {}, function(code){
             code = $('<div>').text(code).html()
             // TODO find why type don't work
             $('#' + type).html(prettyPrintOne(code, type))

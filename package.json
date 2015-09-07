@@ -1,6 +1,6 @@
 {
   "name": "js-skeleton",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A tool for build JS demo quickly",
   "main": "index.js",
   "scripts": {
