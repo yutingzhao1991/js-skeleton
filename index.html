@@ -43,7 +43,7 @@
         max-height: 180px;
     }
     #workspace, #js {
-        min-height: 560px;
+        min-height: 400px;
     }
     </style>
 </head>
@@ -55,15 +55,15 @@
         <h1 id="name">JS-SKELETON</h1>
         <div class="row">
             <div class="col-md-6">
-                <pre id="html" class="block">loading html ...</pre>
+                <pre id="html" class="block">HTML</pre>
             </div>
             <div class="col-md-6">
-                <pre id="css" class="block">loading css ...</pre>
+                <pre id="css" class="block">CSS</pre>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <pre id="js" class="block">loading js ...</pre>
+                <pre id="js" class="block">JS</pre>
             </div>
             <div class="col-md-6">
                 <iframe src="" frameborder="0" id="workspace" class="block"></iframe>
@@ -92,6 +92,9 @@
         laodCode('js')
         laodCode('css')
         laodCode('html')
+        var bottomBoxHeight = $(window).height() - 250
+        $('#js').height(bottomBoxHeight)
+        $('#workspace').height(bottomBoxHeight)
     }
 
     function laodCode(type) {
