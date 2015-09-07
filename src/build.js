@@ -27,10 +27,22 @@ if (target) {
     console.log('building all')
     // 没有目标则默认build全部
     var names = fs.readdirSync(__dirname + '/../workspace')
+    var demoList = []
     names.forEach(function(n) {
         var stats = fs.lstatSync(__dirname + '/../workspace/' + n)
         if (stats.isDirectory()) {
             building(n)
+            demoList.push(n)
+        }
+    })
+    var config = {
+        demoList: demoList
+    }
+    fs.writeFile(__dirname + '/../works/config.json', JSON.stringify(config), function(e) {
+        if (e) {
+            console.error(e)
+        } else {
+            console.log('success to write config.json')
         }
     })
 }
@@ -61,8 +73,4 @@ function getResource(name, type) {
         ret = ''
     }
     return ret
-}
-
-function buildConfig() {
-    // TODO
 }
