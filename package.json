@@ -1,0 +1,11 @@
+{
+  "name": "js-skeleton",
+  "version": "1.0.0",
+  "description": "A tool for build JS demo quickly",
+  "main": "index.js",
+  "scripts": {
+    "build": "node src/build.js"
+  },
+  "author": "Tingzhao Yu",
+  "license": "ISC"
+}
