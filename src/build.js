@@ -3,14 +3,61 @@
 var fs = require('fs')
 
 var TMPL = fs.readFileSync(__dirname + '/skeleton.tmpl') + ''
-var target = process.argv[1]
+var target = process.argv[2]
+
+// 初始化works文件夹
+try {
+    // Query the entry
+    var stats = fs.lstatSync(__dirname + '/../works')
+    // Is it a directory?
+    console.log(stats.isDirectory())
+    if (stats.isDirectory()) {
+        // Yes it is
+    } else {
+        console.log('works is not a directory')
+        process.exit(1)
+    }
+} catch (e) {
+    // create
+    fs.mkdirSync(__dirname + '/../works')
+}
 
 if (target) {
     building(target)
 } else {
+    console.log('building all')
     // 没有目标则默认build全部
+    buildConfig()
 }
 
 function building(name) {
-    var css = fs.readFileSync(__dirname + '../') + ''
+    console.log('start building ' + name)
+    var css = getResource(name, 'css')
+    var js = getResource(name, 'js')
+    var html = getResource(name, 'html')
+    var output = TMPL.replace('{{title}}', name)
+                     .replace('{{css}}', css)
+                     .replace('{{js}}', js)
+                     .replace('{{html}}', html)
+    fs.writeFile(__dirname + '/../works/' + name + '.html', output, function(e) {
+        if (e) {
+            console.error(e)
+        } else {
+            console.log('success to write ' + name + '.html')
+        }
+    })
+}
+
+function getResource(name, type) {
+    var ret = ''
+    try {
+        ret = fs.readFileSync(__dirname + '/../workspace/' + name + '/app.' + type) + ''
+    } catch (e) {
+        ret = ''
+    }
+    return ret
+}
+
+function buildConfig() {
+    // TODO
 }

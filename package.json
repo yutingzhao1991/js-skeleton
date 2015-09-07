@@ -4,8 +4,12 @@
   "description": "A tool for build JS demo quickly",
   "main": "index.js",
   "scripts": {
-    "build": "node src/build.js"
+    "build": "node src/build.js",
+    "watch": "node src/watch.js"
   },
   "author": "Tingzhao Yu",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "watch": "^0.16.0"
+  }
 }

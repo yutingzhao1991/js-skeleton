@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-SKELETON</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/highlight.css">
+    <style>
+    html, body {
+        height: 100%;
+        background-color: #eee;
+    }
+    h1 {
+        text-align: center;
+    }
+    .block {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin: 3px;
+        padding: 3px;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+    }
+    #html, #css {
+        max-height: 180px;
+    }
+    #workspace, #js {
+        min-height: 560px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 id="name">JS-SKELETON</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <pre id="html" class="block">loading html ...</pre>
+            </div>
+            <div class="col-md-6">
+                <pre id="css" class="block">loading css ...</pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <pre id="js" class="block">loading js ...</pre>
+            </div>
+            <div class="col-md-6">
+                <iframe src="" frameborder="0" id="workspace" class="block"></iframe>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/prettify/r298/prettify.js"></script>
+    <script type="text/javascript">
+    var name = getUrlParameter('name') || 'helloworld'
+    $('#workspace').attr('src', 'works/' + name + '.html')
+    $('#name').text(name)
+    laodCode('js')
+    laodCode('css')
+    laodCode('html')
+    function laodCode(type) {
+        return $.get('workspace/' + name + '/app.' + type, {}, function(code){
+            code = $('<div>').text(code).html()
+            // TODO find why type don't work
+            $('#' + type).html(prettyPrintOne(code, type))
+        }, 'text')
+    }
+
+    // copy from http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
+    function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    
+    </script>
+</body>
+</html>
