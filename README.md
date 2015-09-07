@@ -17,3 +17,8 @@ Usage
 打开`index.html?name=helloworld`可以让代码在demo中展示，helloworld替换为你的demo的名字。
 
 可以通过运行`npm run watch`来实时监听文件变化，自动build。
+
+Demo
+---
+
+![helloworld](https://cloud.githubusercontent.com/assets/1061968/9709294/af1770ea-555b-11e5-8dcf-c242559124c5.png)
