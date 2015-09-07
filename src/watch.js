@@ -7,7 +7,7 @@ watch.watchTree(__dirname + '/../workspace', function (f, curr, prev) {
     if (typeof f !== 'string') {
         return
     }
-    var temp = f.match(/workspace\/([\w-_]+)\/app/)
+    var temp = f.match(/workspace\/([^\W]+)\/app/)
     if (temp && temp.length == 2) {
         var name = temp[1]
         var builder = spawn('node', [__dirname + '/build.js', name])
