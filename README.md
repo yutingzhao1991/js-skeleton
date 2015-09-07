@@ -14,7 +14,7 @@ Usage
 
 运行`npm run build`，处理过后的结果会输出到`works`文件夹，直接用浏览器打开里面的html即可。
 
-打开`index.html?name=helloworld`可以让代码在demo中展示，helloworld替换为你的demo的名字。
+开启一个HTTP服务（推荐使用[http-server](https://www.npmjs.com/package/http-server)，或者`python -m SimpleHTTPServer`），打开`http://localhost:8080/index.html?name=helloworld`可以让代码在demo中展示，helloworld替换为你的demo的名字，端口号替换为你的http服务的端口。
 
 可以通过运行`npm run watch`来实时监听文件变化，自动build。
 

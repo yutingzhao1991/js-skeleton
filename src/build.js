@@ -10,7 +10,6 @@ try {
     // Query the entry
     var stats = fs.lstatSync(__dirname + '/../works')
     // Is it a directory?
-    console.log(stats.isDirectory())
     if (stats.isDirectory()) {
         // Yes it is
     } else {
@@ -27,7 +26,13 @@ if (target) {
 } else {
     console.log('building all')
     // 没有目标则默认build全部
-    buildConfig()
+    var names = fs.readdirSync(__dirname + '/../workspace')
+    names.forEach(function(n) {
+        var stats = fs.lstatSync(__dirname + '/../workspace/' + n)
+        if (stats.isDirectory()) {
+            building(n)
+        }
+    })
 }
 
 function building(name) {
