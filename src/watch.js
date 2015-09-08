@@ -2,6 +2,12 @@
 
 var watch = require('watch')
 var spawn = require('child_process').spawn
+var isDebug = false
+process.argv.forEach(function(a) {
+    if (a == '--debug') {
+        isDebug = true
+    }
+})
 
 watch.watchTree(__dirname + '/../workspace', function (f, curr, prev) {
     if (typeof f !== 'string') {
@@ -10,7 +16,11 @@ watch.watchTree(__dirname + '/../workspace', function (f, curr, prev) {
     var temp = f.match(/workspace\/(.+)\/app/)
     if (temp && temp.length == 2) {
         var name = temp[1]
-        var builder = spawn('node', [__dirname + '/build.js', name])
+        var params = [__dirname + '/build.js', name]
+        if (isDebug) {
+            params.push('--debug')
+        }
+        var builder = spawn('node', params)
         builder.stdout.on('data', function (data) {
             console.log('' + data)
         })

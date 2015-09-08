@@ -1,11 +1,13 @@
 {
   "name": "js-skeleton",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A tool for build JS demo quickly",
   "main": "index.js",
   "scripts": {
     "build": "node src/build.js",
-    "watch": "node src/watch.js"
+    "build-d": "node src/build.js --debug",
+    "watch": "node src/watch.js",
+    "watch-d": "node src/watch.js --debug"
   },
   "author": "Tingzhao Yu",
   "license": "ISC",
