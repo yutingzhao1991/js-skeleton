@@ -3,7 +3,7 @@ JS-SKELETON
 
 一个web前端页面骨架，快速构建前端DEMO的利器。让你抛掉繁琐的CSS和JS引用，快速的打造DEMO。利用Github Page可以让你快速得到一个可以直接访问的Demo。
 
-[示例](http://yutingzhao.com/js-skeleton/?name=helloworld)
+[示例 点我！](http://yutingzhao.com/js-skeleton/?name=helloworld)
 
 本地使用
 ---
@@ -28,4 +28,9 @@ JS-SKELETON
 - 你可以在workspace中添加你的demo并用git命令提交，包括也要提交build之后works文件夹中的文件。
 - 最后将gh-pages分支push到github上：`git push --set-upstream origin gh-pages`。
 - 然后你就可以访问http://yourname.github.io/js-skeleton?name=helloworld看到你的demo页面了。
+
+TIPS
+---
+
+使用`npm run build-d`或者`npm run watch-d`可以让CSS和JS以文件应用的方式引入，使得JS和CSS文件的修改可以马上反映到页面中，便于调试。
 

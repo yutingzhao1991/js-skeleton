@@ -3,7 +3,14 @@
 var fs = require('fs')
 
 var TMPL = fs.readFileSync(__dirname + '/skeleton.tmpl') + ''
+var DEBUG_TMPL = fs.readFileSync(__dirname + '/debug.tmpl') + ''
 var target = process.argv[2]
+var isDebug = false
+process.argv.forEach(function(a) {
+    if (a == '--debug') {
+        isDebug = true
+    }
+})
 
 // 初始化works文件夹
 try {
@@ -21,11 +28,15 @@ try {
     fs.mkdirSync(__dirname + '/../works')
 }
 
-if (target) {
+if (target && target != '--debug') {
     building(target)
 } else {
     console.log('building all')
     // 没有目标则默认build全部
+    buildAll()
+}
+
+function buildAll() {
     var names = fs.readdirSync(__dirname + '/../workspace')
     var demoList = []
     names.forEach(function(n) {
@@ -52,10 +63,13 @@ function building(name) {
     var css = getResource(name, 'css')
     var js = getResource(name, 'js')
     var html = getResource(name, 'html')
-    var output = TMPL.replace('{{title}}', name)
-                     .replace('{{css}}', css)
-                     .replace('{{js}}', js)
+    var T = isDebug ? DEBUG_TMPL : TMPL
+    var output = T.replace(/\{\{name\}\}/g, name)
                      .replace('{{html}}', html)
+    if (!isDebug) {
+        output = output.replace('{{css}}', css)
+                       .replace('{{js}}', js)
+    }
     fs.writeFile(__dirname + '/../works/' + name + '.html', output, function(e) {
         if (e) {
             console.error(e)
