@@ -27,7 +27,7 @@ JS-SKELETON
 - 按照上面的[本地使用]中的说明操作，最后运行`npm run build`来build结果。
 - 你可以在workspace中添加你的demo并用git命令提交，包括也要提交build之后works文件夹中的文件。
 - 最后将gh-pages分支push到github上：`git push --set-upstream origin gh-pages`。
-- 然后你就可以访问http://yourname.github.io/js-skeleton?name=helloworld看到你的demo页面了。
+- 然后你就可以访问 http://yourname.github.io/js-skeleton?name=helloworld 看到你的demo页面了。
 
 TIPS
 ---
