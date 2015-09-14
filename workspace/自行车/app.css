@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-color: rgba(138, 213, 251, 0.8);
+    overflow: hidden;
+}
+
+@keyframes bg-run {
+    from {
+        left: 0;
+    }
+    to {
+        left: -1000px;
+    }
+}
+.backgroud {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4000px;
+    animation: bg-run 50s linear 0s infinite normal;
+}
+.cloud {
+    position: absolute;
+    background-color: #fff;
+}
+#cloud-1 {
+    height: 30px;
+    width: 50px;
+    left: 400px;
+    top: 20px;
+}
+#cloud-2 {
+    height: 60px;
+    width: 200px;
+    left: 360px;
+    top: 40px;
+}
+
+#cloud-3 {
+    height: 70px;
+    width: 80px;
+    left: 800px;
+    top: 200px;
+}
+
+#cloud-4 {
+    height: 70px;
+    width: 120px;
+    left: 1800px;
+    top: 100px;
+}
+#cloud-5 {
+    height: 40px;
+    width: 100px;
+    left: 1200px;
+    top: 20px;
+}
+
+.sun {
+    height: 180px;
+    width: 180px;
+    border-radius: 90px;
+    background-color: red;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+}
+
+@keyframes road-run {
+    from {
+        left: 0;
+    }
+    to {
+        left: -6000px;
+    }
+}
+.road {
+    height: 160px;
+    border-top: 5px double #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #ccc;
+}
+.road-line {
+    width: 8000px;
+    border-top: 5px dashed #fff;
+    position: absolute;
+    top: 100px;
+    animation: road-run 30s linear 0s infinite normal;
+}
+
+.bike {
+    position: absolute;
+    width: 260px;
+    height: 200px;
+    bottom: 120px;
+    left: 50%;
+    margin-left: -130px;
+}
+
+
+@keyframes wheel-turn {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+.wheel {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: #000;
+    position: absolute;
+    bottom: 0;
+    animation: wheel-turn 1s linear 0s infinite normal;
+}
+.wheel:first-child {
+    left: 0;
+}
+.wheel:last-child {
+    right: 0;
+}
+.wheel-light {
+    width: 10px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: yellow;
+    position: absolute;
+    left: 45px;
+    top: 6px;
+}
