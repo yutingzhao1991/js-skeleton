@@ -109,6 +109,65 @@ body {
     margin-left: -130px;
 }
 
+.skeleton {
+    position: absolute;
+    background-color: #333;
+}
+
+#skeleton-a {
+    height: 10px;
+    width: 84px;
+    border-radius: 3px;
+    top: 88px;
+    left: 92px;
+    transform: rotate(-5deg);
+}
+
+#skeleton-b {
+    height: 10px;
+    width: 80px;
+    border-radius: 3px;
+    top: 123px;
+    left: 37px;
+    transform: rotate(120deg);
+}
+
+#skeleton-c {
+    height: 10px;
+    width: 80px;
+    border-radius: 3px;
+    top: 123px;
+    left: 78px;
+    transform: rotate(60deg);
+}
+
+#skeleton-d {
+    height: 10px;
+    width: 80px;
+    border-radius: 3px;
+    top: 121px;
+    left: 115px;
+    transform: rotate(120deg);
+}
+
+#skeleton-e {
+    height: 10px;
+    width: 80px;
+    border-radius: 3px;
+    top: 155px;
+    left: 55px;
+    transform: rotate(-1deg);
+}
+
+#skeleton-f {
+    height: 10px;
+    width: 80px;
+    border-radius: 3px;
+    top: 117px;
+    left: 151px;
+    transform: rotate(60deg);
+}
+
 
 @keyframes wheel-turn {
     from {
@@ -126,12 +185,11 @@ body {
     position: absolute;
     bottom: 0;
     animation: wheel-turn 1s linear 0s infinite normal;
+    right: 0;
 }
 .wheel:first-child {
     left: 0;
-}
-.wheel:last-child {
-    right: 0;
+    right: none;
 }
 .wheel-light {
     width: 10px;
